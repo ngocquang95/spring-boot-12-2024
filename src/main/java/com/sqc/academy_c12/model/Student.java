@@ -1,4 +1,4 @@
-package com.sqc.academy_c12;
+package com.sqc.academy_c12.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

@@ -3,7 +3,7 @@ package com.sqc.academy_c12.controller;
 import com.sqc.academy_c12.dto.ApiResponse;
 import com.sqc.academy_c12.exception.ApiException;
 import com.sqc.academy_c12.exception.ErrorCode;
-import com.sqc.academy_c12.model.Student;
+import com.sqc.academy_c12.entity.Student;
 import com.sqc.academy_c12.service.IStudentService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,9 +20,11 @@ public class StudentController {
     IStudentService studentService;
 
     @GetMapping
-    public ResponseEntity<?> getStudents() {
+    public ResponseEntity<?> getStudents(@RequestParam(defaultValue = "") String name,
+                                         Double fromScore,
+                                         Double toScore) {
         return ResponseEntity.ok(ApiResponse.builder()
-                .data(studentService.findAll())
+                .data(studentService.findAll(name, fromScore, toScore))
                 .build());
     }
 
